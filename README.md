@@ -51,6 +51,11 @@
         button:hover {
             background: #bbbbbb;
         }
+        #dateTime {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
@@ -59,6 +64,7 @@
         <div id="randomNumbers">Tap the button</div>
         <button onclick="generateUniqueNumber()">Generate Number</button>
         <button onclick="resetNumber()">Reset</button>
+        <div id="dateTime"></div>
     </div>
     <script>
         let previousNumber = null;
@@ -82,6 +88,15 @@
             numberElement.textContent = "Tap the button";
             numberElement.style.opacity = 1;
         }
+
+        function updateDateTime() {
+            let now = new Date();
+            let dateTimeString = now.toLocaleString();
+            document.getElementById("dateTime").textContent = dateTimeString;
+        }
+        
+        setInterval(updateDateTime, 1000);
+        updateDateTime(); // Initialize immediately
     </script>
 </body>
 </html>
