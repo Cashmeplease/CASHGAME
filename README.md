@@ -49,17 +49,6 @@
         button:hover {
             background: #bbbbbb;
         }
-        .falling-cash {
-            position: absolute;
-            width: 60px;
-            height: auto;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-        @keyframes fall {
-            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
     </style>
 </head>
 <body>
@@ -79,24 +68,6 @@
             previousNumber = newNumber;
             document.getElementById("randomNumbers").textContent = `${newNumber}`;
         }
-        
-        function createFallingCash() {
-            for (let i = 0; i < 5; i++) { // Increase number of bills falling
-                const cash = document.createElement("img");
-                cash.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Canadian_%24100_note.png/500px-Canadian_%24100_note.png";
-                cash.className = "falling-cash";
-                cash.style.left = `${Math.random() * 100}vw`;
-                cash.style.animationDuration = `${Math.random() * 4 + 2}s`;
-                cash.style.width = `${Math.random() * 40 + 40}px`; // Vary size of bills
-                document.body.appendChild(cash);
-                
-                setTimeout(() => {
-                    cash.remove();
-                }, 6000);
-            }
-        }
-        
-        setInterval(createFallingCash, 400); // Increase frequency of falling cash
     </script>
 </body>
 </html>
