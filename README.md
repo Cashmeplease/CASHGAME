@@ -34,6 +34,8 @@
             font-weight: bold;
             margin-top: 20px;
             color: #ffffff;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
         }
         button {
             background: #ffffff;
@@ -56,6 +58,7 @@
         <h1>FIND THE CASH WINNIPEG</h1>
         <div id="randomNumbers">Tap the button</div>
         <button onclick="generateUniqueNumber()">Generate Number</button>
+        <button onclick="resetNumber()">Reset</button>
     </div>
     <script>
         let previousNumber = null;
@@ -66,7 +69,18 @@
                 newNumber = Math.floor(Math.random() * 90) + 10;
             } while (newNumber === previousNumber);
             previousNumber = newNumber;
-            document.getElementById("randomNumbers").textContent = `${newNumber}`;
+            let numberElement = document.getElementById("randomNumbers");
+            numberElement.style.opacity = 0;  // Fade out
+            setTimeout(function() {
+                numberElement.textContent = `${newNumber}`;
+                numberElement.style.opacity = 1;  // Fade in
+            }, 300); // Wait for the fade-out transition to complete
+        }
+
+        function resetNumber() {
+            let numberElement = document.getElementById("randomNumbers");
+            numberElement.textContent = "Tap the button";
+            numberElement.style.opacity = 1;
         }
     </script>
 </body>
